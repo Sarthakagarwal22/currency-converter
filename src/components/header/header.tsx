@@ -1,6 +1,8 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
-import { media } from '../helpers/media-query'
+import  HeaderLinks  from './header-links'
+import styled from 'styled-components';
+import { media } from '../../helpers/media-query';
+
 
 const HeaderWrapper = styled.div`
 	width: 100vw;
@@ -21,9 +23,10 @@ const HeaderWrapper = styled.div`
 
 const HeaderMainText = styled.h1`
 	color:white;
-	
+	font-size:1.75em;
 	${media.tablet}{
 		padding-right:2em;
+		font-size:2em;
 	}
 `
 
@@ -34,23 +37,23 @@ const TabletHeaderNavigationIcon = styled.span`
 	}
 `
 
-const HeaderLinksWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
 
-	${media.tablet} {
-		flex-direction: row;
+const Menuimage = styled.img`
+	position: absolute;
+	left: 10px;
+`
+
+const HeaderLinksMobile = styled.div`
+	display:block;
+	${media.tablet}{
+		display:none;
 	}
 `
 
-const HeaderLink = styled.div`
-	padding: 0.5em 1em;	
-	color:white;
-
+const HeaderLinksDesktop = styled.div`
+	display:none;
 	${media.tablet}{
-		padding: 0 1.25em;
+		display:block;
 	}
 `
 
@@ -63,7 +66,7 @@ interface CProps {}
 
 export default class Header extends React.Component<CProps, CState> {
 	
-	constructor(props:Object){
+	constructor(props:object){
 		super(props);
 		this.state = {
 			showNavigationLinks:false
@@ -77,8 +80,8 @@ export default class Header extends React.Component<CProps, CState> {
 			
 				<HeaderMainText>
 					<TabletHeaderNavigationIcon>
-						<img 
-							src={require('../local-data/images/menu-icon.png')} 
+						<Menuimage 
+							src={require('../../local-data/images/menu-icon.png')} 
 							height="30px"
 							onClick={ ()=>{
 								this.setState({showNavigationLinks:(!this.state.showNavigationLinks)})
@@ -88,20 +91,18 @@ export default class Header extends React.Component<CProps, CState> {
 					Foreign Exchange
 				</HeaderMainText>
 				<br />
-				<HeaderLinksWrapper>
-					<HeaderLink>
-						Home
-					</HeaderLink>
-					
-					<HeaderLink>
-						About Us
-					</HeaderLink>
+				
+				<HeaderLinksMobile>
+				{
+					this.state.showNavigationLinks &&
+					<HeaderLinks />
+				}
+				</HeaderLinksMobile>
 
-					<HeaderLink>
-						Contact Us
-					</HeaderLink>
+				<HeaderLinksDesktop>
+					<HeaderLinks />	
+				</HeaderLinksDesktop>
 
-				</HeaderLinksWrapper>
 			</HeaderWrapper>
 		)
 	}
