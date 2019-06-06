@@ -2,15 +2,19 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { media } from '../../helpers/media-query'
 
-const HeaderLinksWrapper = styled.div`
-	display: flex;
+interface Iprops {
+	showNavigationLinks: boolean
+}
+
+const HeaderLinksWrapper = styled.div<Iprops>`
+	display: ${ (props:Iprops) => props.showNavigationLinks ? "flex" : "none" };
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 
 	${media.tablet} {
 		flex-direction: row;
-		display: "flex" !important;
+		display: flex;
 	}
 `
 
@@ -23,10 +27,10 @@ const HeaderLink = styled.div`
 	}
 `
 
-export default class HeaderLinksMobile extends React.Component{
+export default class HeaderLinksMobile extends React.Component<Iprops>{
 	render() {
 		return(
-				<HeaderLinksWrapper>
+				<HeaderLinksWrapper showNavigationLinks = {this.props.showNavigationLinks} >
 
 					<HeaderLink>
 						Home

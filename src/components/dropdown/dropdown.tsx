@@ -36,7 +36,7 @@ const DropDownImageSpan = styled.span`
 	background: var(--blue);
     padding: 17px;
     position: relative;
-    left:-11px;
+    left:-14px;
     border-radius:0 4px 4px 0;
     cursor:pointer;
 `
@@ -45,27 +45,30 @@ const DropDownInputWrapper = styled.div`
 	display:flex;
 `
 
-interface Cstate{
-	currency: string[],
-	selectedCurrency: string,
+interface Istate{
+	selectedOption: string,
 	showOptions: boolean,
 }
 
-interface CProps{}
+interface IProps{
+	dropDownOptions: string[],
+	_selectedOption: any,
+	defaultValue?: string,
+}
 
-export default class CDropDown extends React.Component<CProps,Cstate> {
+export default class CDropDown extends React.Component<IProps,Istate> {
 	state = {
-		currency : ["JPY","USD","INR","CNY","GBP","EUR"],
-		selectedCurrency: "JPY",
+		selectedOption: this.props.defaultValue || this.props.dropDownOptions[0],
 		showOptions: false
 	}
 
 
-	_handleCurrencyChange(index:number){
+	_handleCurrencyChange = (index:number) => {
 		this.setState({
-			selectedCurrency: this.state.currency[index],
+			selectedOption: this.props.dropDownOptions[index],
 			showOptions: false
 		})
+		this.props._selectedOption(index);
 	}
 
 	render(){
@@ -74,7 +77,7 @@ export default class CDropDown extends React.Component<CProps,Cstate> {
 			<DropDownInputWrapper>
 				<DropDownReadOnlyInput 
 				readOnly 
-				value={this.state.selectedCurrency} 
+				value={this.state.selectedOption} 
 				onClick={()=>{
 					this.setState({showOptions:!this.state.showOptions})
 				}} />
@@ -108,7 +111,7 @@ export default class CDropDown extends React.Component<CProps,Cstate> {
 						this.state.showOptions &&
 						<OptionsWrapper>
 						{
-							this.state.currency.map((currrency:string, index:number)=>(
+							this.props.dropDownOptions.map((currrency:string, index:number)=>(
 								<Option 
 									key={index} 
 									onClick={()=>{

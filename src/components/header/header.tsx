@@ -57,14 +57,14 @@ const HeaderLinksDesktop = styled.div`
 	}
 `
 
-interface CState {
+interface IState {
     showNavigationLinks: boolean;
 }
 
-interface CProps {}
+interface IProps {}
 
 
-export default class Header extends React.Component<CProps, CState> {
+export default class CHeader extends React.Component<IProps, IState> {
 	
 	constructor(props:object){
 		super(props);
@@ -77,7 +77,6 @@ export default class Header extends React.Component<CProps, CState> {
 	render() {
 		return(
 			<HeaderWrapper>
-			
 				<HeaderMainText>
 					<TabletHeaderNavigationIcon>
 						<Menuimage 
@@ -91,18 +90,7 @@ export default class Header extends React.Component<CProps, CState> {
 					Foreign Exchange
 				</HeaderMainText>
 				<br />
-				
-				<HeaderLinksMobile>
-				{
-					this.state.showNavigationLinks &&
-					<HeaderLinks />
-				}
-				</HeaderLinksMobile>
-
-				<HeaderLinksDesktop>
-					<HeaderLinks />	
-				</HeaderLinksDesktop>
-
+				<HeaderLinks showNavigationLinks = {this.state.showNavigationLinks} />
 			</HeaderWrapper>
 		)
 	}
