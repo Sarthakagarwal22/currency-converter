@@ -2,19 +2,18 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
-    output: {
-        filename: "bundle.js",
-        path: __dirname + "/dist",
-        publicPath: "/"
-    },
+  output: {
+      filename: "bundle.js",
+      path: __dirname + "/build",
+  },
 
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+  // Enable sourcemaps for debugging webpack's output.
+  devtool: "source-map",
 
-    resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
-    },
+  resolve: {
+      // Add '.ts' and '.tsx' as resolvable extensions.
+      extensions: [".ts", ".tsx", ".js", ".json"]
+  },
   module: {
     rules: [
       {
