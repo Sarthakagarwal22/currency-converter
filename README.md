@@ -6,7 +6,7 @@ View the project, live [here](https://jolly-visvesvaraya-153452.netlify.com/)
 
 ### Functionalities
 
-You can change the base currecny to any one from the drop down. The application will make a get request to https://exchangeratesapi.io/ with the corresponding base currency and give you exchange rates against it. You can also search for a specific symbol by typing in the search bar, without worrying about the case you type in, i.e. you can search in lower case too. You wont find the base currency in the exchange rate table. 
+You can change the base currecny to any one from the drop down. The application will make a get request to https://exchangeratesapi.io/ with the corresponding base currency and give you exchange rates against it. You can also search for a specific symbol by typing in the search bar, without worrying about the case you type in, i.e. you can search in lower case too. You wont find the base currency in the exchange rate table. The application uses the functionalities of netlify, and hence employ CI/CD. That is, whenever any new update is pushed to the master branch of the application, the netlify server runs the build command and serves the application again from the hence built file. This entire continuous development process, requires no human input.
 
 The project has been build using the following technologies
 
