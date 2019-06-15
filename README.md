@@ -1,6 +1,6 @@
 # currency-converter
 
-This is a simple project, where in you can check the exchange rates of currencies, according to the data provied by [https://exchangeratesapi.io/].The application is fully responsive and works seamlessly on mobile phones, tablets and laptops. You can also view the % drop or gain in the currency when compared to previous day. 
+This is a simple project, where in you can check the exchange rates of currencies, according to the data provied by (https://exchangeratesapi.io/).The application is fully responsive and works seamlessly on mobile phones, tablets and laptops. You can also view the % drop or gain in the currency when compared to previous day. 
 
 View the project, live [here](https://jolly-visvesvaraya-153452.netlify.com/)
 
